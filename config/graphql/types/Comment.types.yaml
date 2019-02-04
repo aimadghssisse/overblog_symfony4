@@ -1,0 +1,21 @@
+Comment:
+  type: object
+  config:
+    description: "A comment"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the comment."
+      body:
+        type: "String"
+        description: "body  of the comment"
+      article:
+        type: "Article!"
+        description: "article"
+CommentInput:
+  type: input-object
+  config:
+    fields:
+      body:
+        type: "String!"
+

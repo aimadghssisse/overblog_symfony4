@@ -1,0 +1,28 @@
+Query:
+  type: object
+  config:
+    description: "Apartments ORM repository"
+    fields:
+      apartment:
+        type: "Apartment"
+        args:
+          id:
+            description: "Resolves using the apartment id."
+            type: "Int"
+        resolve: "@=resolver('Apartment', [args])"
+      apartments:
+        type: "[Apartment]"
+        resolve: "@=resolver('ApartmentList')"
+      articles_list:
+        type: "[Article]"
+        resolve: "@=resolver('Article')"
+      comment_list:
+        type: "[Comment]"
+        resolve: "@=resolver('Comment')"
+
+      article:
+        type: "Article"
+        args:
+          id:
+            type: "Int"
+        resolve: "@=resolver('SingleArticle', [args])"

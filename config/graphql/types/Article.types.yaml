@@ -1,0 +1,45 @@
+Mutation:
+  type: object
+  config:
+    fields:
+      article:
+        type: "Article!"
+        resolve: '@=mutation("newarticle", [args["input"]["title"]])'
+        args:
+          #using input object type is optional, we use it here to be iso with relay mutation example.
+          input:
+            type: "ArticleInput!"
+
+
+      comment:
+        type: "Comment!"
+        args:
+          input:
+            type: "CommentInput!"
+        resolve: '@=mutation("newcomment", [args["input"]["body"]])'
+
+
+
+
+
+Article:
+  type: object
+  config:
+    description: "An article"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the article."
+      title:
+        type: "String"
+        description: "title of the article"
+      comments:
+        type: "[Comment]"
+        description: "all comments of this article"
+
+ArticleInput:
+  type: input-object
+  config:
+    fields:
+      title:
+        type: "String!"
